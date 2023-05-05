@@ -1,4 +1,4 @@
-const String linkServerName = "http://10.0.2.2/coursephp";
+const String linkServerName = "https://exfai.com/coursephp";
 const String linkImageRoot = "$linkServerName/upload";
 // Auth
 const String linkSignUp = "$linkServerName/auth/signup.php";

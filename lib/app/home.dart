@@ -66,26 +66,28 @@ class _HomeState extends State<Home> with Crud {
                               physics: NeverScrollableScrollPhysics(),
                               itemBuilder: (context, i) {
                                 return CardNotes(
-                                  onDelete: () async {
-                                    var response = await postRequest(
-                                        linkDeleteNotes, {
-                                      "id": snapshot.data['data'][i]['notes_id'].toString() , 
-                                      "imagename" : snapshot.data['data'][i]['notes_image'].toString() 
-                                    });
-                                    if (response['status'] == "success") {
-                                      Navigator.of(context)
-                                          .pushReplacementNamed("home");
-                                    }
-                                  },
-                                  ontap: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) => EditNotes(
-                                                notes: snapshot.data['data']
-                                                    [i])));
-                                  },
-                                  notemodel: NoteModel.fromJson(snapshot.data['data'][i])
-                                );
+                                    onDelete: () async {
+                                      var response =
+                                          await postRequest(linkDeleteNotes, {
+                                        "id": snapshot.data['data'][i]
+                                                ['notes_id']
+                                            .toString(),
+                                        // "imagename" : snapshot.data['data'][i]['notes_image'].toString()
+                                      });
+                                      if (response['status'] == "success") {
+                                        Navigator.of(context)
+                                            .pushReplacementNamed("home");
+                                      }
+                                    },
+                                    ontap: () {
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) => EditNotes(
+                                                  notes: snapshot.data['data']
+                                                      [i])));
+                                    },
+                                    notemodel: NoteModel.fromJson(
+                                        snapshot.data['data'][i]));
                               });
                         }
                         if (snapshot.connectionState ==
